@@ -1,4 +1,6 @@
 @import './base.css';
-body{
+@import './ress.min.css';
+
+body {
     background: #222;
 }
