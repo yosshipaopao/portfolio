@@ -1,0 +1,10 @@
+[
+    {
+        "name": "HOME",
+        "href": "/"
+    },
+    {
+        "name": "WORKS",
+        "href": "/work"
+    }
+]

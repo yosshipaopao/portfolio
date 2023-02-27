@@ -1,5 +1,6 @@
 <script setup>
 import { useMenuStore } from "@/stores/menu";
+import menudata from '@/assets/data/menu.json';
 const MenuStore = useMenuStore();
 </script>
 <template>
@@ -8,7 +9,10 @@ const MenuStore = useMenuStore();
     <span></span>
   </label>
   <div class="menu">
-
+    <div class="menubutton" v-for="data in menudata">
+      <RouterLink :to="data.href">{{data.name}}</RouterLink>
+    </div>
+    <RouterLink to="/test">test</RouterLink>
   </div>
 </template>
 <style scoped lang="scss">
@@ -29,6 +33,7 @@ $menu_button_size: 100px;
 
   }
   label{
+    cursor: pointer;
     position: fixed;
     top: 10px;
     left: 10px;
@@ -63,6 +68,20 @@ $menu_button_size: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height:calc( 100% - $menu_button_size * 2);
+  height:calc( 100% - $menu_button_size * 3);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  justify-content: center;
+  align-items: center;
+  &::-webkit-scrollbar {
+      display: none;
+  }
+  .menubutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+  }
 }
 </style>

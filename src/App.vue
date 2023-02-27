@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { useMenuStore } from "@/stores/menu";
-import Menu from "@/views/Menu.vue";
+import Menu from "@/components/Menu.vue";
 const MenuStore = useMenuStore();
 </script>
 
@@ -10,7 +10,9 @@ const MenuStore = useMenuStore();
     <div :class="{ menu: true, open: MenuStore.open }">
       <Menu />
     </div>
-    <div class="content"></div>
+    <div class="content">
+      <RouterView/>
+    </div>
   </main>
 </template>
 
