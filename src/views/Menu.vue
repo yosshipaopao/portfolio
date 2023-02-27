@@ -1,5 +1,5 @@
 <script setup>
-import { useMenuStore } from "@/stores/Menu";
+import { useMenuStore } from "@/stores/menu";
 const MenuStore = useMenuStore();
 </script>
 <template>
@@ -16,14 +16,14 @@ $menu_button_size: 100px;
   input{
     display: none;
     &:checked ~ label span{
-      background-color: rgba(255, 255, 255, 0);
+        background-color:#ffffff;
       &::before {
-        bottom: 0;
-        transform: rotate(45deg);
+        bottom: calc($menu_button_size/3);
+        transform: rotate(0deg);
       }
       &::after{
-        top: 0;
-        transform: rotate(-45deg);
+        top: calc($menu_button_size/3);
+        transform: rotate(0deg);
       }
     }
 
@@ -48,11 +48,14 @@ $menu_button_size: 100px;
       position: absolute;
     }
     span{
+      background-color: rgba(255, 255, 255, 0);
       &::before{
-        bottom: calc($menu_button_size/3);
+        bottom: 0;
+        transform: rotate(45deg);
       }
       &::after{
-        top: calc($menu_button_size/3);
+          top: 0;
+        transform: rotate(-45deg);
       }
     }
   }

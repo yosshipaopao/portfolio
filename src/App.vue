@@ -37,7 +37,7 @@ main {
         content: '';
         display: block;
         position: fixed;
-        width: 51%;
+        width: calc(50% + 2px);
         height: 100vh;
         z-index: -1;    
         background: #050;
@@ -48,7 +48,7 @@ main {
   width: calc($menu_button_size + 20px );
   transition: width .5s var(--anm1);
   &::after{
-    width: calc($menu_button_size + 20px + 1%);
+    width: calc($menu_button_size + 21px);
     transition: width .5s .1s var(--anm1);
   }
 }
