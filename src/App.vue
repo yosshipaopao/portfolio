@@ -34,7 +34,8 @@ main {
     background: #222;
     transition: width .5s .1s var(--anm1);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;  
     &::after{
         content: '';
         display: block;
