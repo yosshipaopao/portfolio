@@ -1,20 +1,23 @@
 <script setup>
+import {onMounted} from "vue";
 import { useMenuStore } from "@/stores/menu";
 import menudata from "@/assets/data/menu.json";
 const MenuStore = useMenuStore();
+onMounted(()=>{
+  const menu=document.getElementById("menu");
+  menu.onwheel=e=>{
+    console.log(event.wheelDelta)
+  }
+});
 </script>
 <template>
   <input type="checkbox" v-model="MenuStore.open" id="menu_check" />
   <label for="menu_check">
     <span></span>
   </label>
-  <div class="menu">
+  <div class="menu" id="menu">
     <div class="menubutton" v-for="data in menudata">
       <RouterLink :to="data.to">{{ data.name }}</RouterLink>
-    </div>
-    
-      <div class="scroll-control">
-        <div class="height-controller"></div>
     </div>
   </div>
 </template>

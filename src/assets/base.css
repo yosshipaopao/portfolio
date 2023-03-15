@@ -1,3 +1,7 @@
 :root {
     --anm1: cubic-bezier(1, 0, 0, 1);
 }
+@font-face {
+    font-family: 'PlemolJP';
+    src: url('@/assets/fonts/PlemolJP-Regular.woff2') format('woff2');
+  }
