@@ -6,9 +6,11 @@ const MenuStore = useMenuStore();
 </script>
 
 <template>
-  <main>
-    <div :class="{ menu: true, open: MenuStore.open }">
+  <main :class="{open:MenuStore.open}">
+    <div class="menu">
       <Menu />
+    </div>
+    <div class="highlight">
     </div>
     <div class="content">
       <RouterView/>
@@ -19,15 +21,15 @@ const MenuStore = useMenuStore();
 <style scoped lang="scss">
 $menu_button_size: 100px;
 main {
-  display: flex;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  div {
+  background: #0fa;
+  > div{ 
+    float: left;
     height: 100vh;
-    width: 80%;
   }
 }
 .menu{
@@ -35,23 +37,27 @@ main {
     transition: width .5s .1s var(--anm1);
     display: flex;
     flex-direction: column;
-    justify-content: center;  
-    &::after{
-        content: '';
-        display: block;
-        position: fixed;
-        width: calc(50% + 2px);
-        height: 100vh;
-        z-index: -1;    
-        background: #050;
-        transition: width .5s var(--anm1);
-    }
+    justify-content: center;
+    width: calc(50vw - 2px);
 }
-.open {
-  width: calc($menu_button_size + 20px );
+.content{
+  width: calc(50vw - 2px);
+  background: #222;
+  position: absolute;
+  right: 0;
   transition: width .5s var(--anm1);
-  &::after{
-    width: calc($menu_button_size + 21px);
+}
+
+.highlight{
+  width: auto;
+}
+.open{
+  .menu{
+    width: 120px;
+    transition: width .5s var(--anm1);
+  }
+  .content{
+    width: calc(100vw - 124px);
     transition: width .5s .1s var(--anm1);
   }
 }

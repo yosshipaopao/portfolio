@@ -6,7 +6,7 @@ const MenuStore = useMenuStore();
 onMounted(()=>{
   const menu=document.getElementById("menu");
   menu.onwheel=e=>{
-    console.log(event.wheelDelta)
+    console.log(e.deltaY)
   }
 });
 </script>
