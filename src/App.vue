@@ -6,11 +6,9 @@ const MenuStore = useMenuStore();
 </script>
 
 <template>
-  <main :class="{open:MenuStore.open}">
+  <main :class="{close:MenuStore.close}">
     <div class="menu">
       <Menu />
-    </div>
-    <div class="highlight">
     </div>
     <div class="content">
       <RouterView/>
@@ -19,7 +17,6 @@ const MenuStore = useMenuStore();
 </template>
 
 <style scoped lang="scss">
-$menu_button_size: 100px;
 main {
   position: fixed;
   top: 0;
@@ -33,12 +30,12 @@ main {
   }
 }
 .menu{
-    background: #222;
-    transition: width .5s .1s var(--anm1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: calc(50vw - 2px);
+  background: #222;
+  transition: width .5s .1s var(--anm1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(50vw - 2px);
 }
 .content{
   width: calc(50vw - 2px);
@@ -46,12 +43,12 @@ main {
   position: absolute;
   right: 0;
   transition: width .5s var(--anm1);
+  padding: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.highlight{
-  width: auto;
-}
-.open{
+.close{
   .menu{
     width: 120px;
     transition: width .5s var(--anm1);

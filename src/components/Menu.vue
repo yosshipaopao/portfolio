@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted} from "vue";
+import {onMounted,ref} from "vue";
 import { useMenuStore } from "@/stores/menu";
 import menudata from "@/assets/data/menu.json";
 const MenuStore = useMenuStore();
@@ -9,15 +9,42 @@ onMounted(()=>{
     console.log(e.deltaY)
   }
 });
+const dummy={"name": "","to": ""};
+const fixedmenudata=Array(2).fill(dummy).concat(menudata,Array(2).fill(dummy));
+console.log(fixedmenudata);
+const current=ref(0);
 </script>
 <template>
-  <input type="checkbox" v-model="MenuStore.open" id="menu_check" />
+  <input type="checkbox" v-model="MenuStore.close" id="menu_check" />
   <label for="menu_check">
     <span></span>
   </label>
-  <div class="menu" id="menu">
-    <div class="menubutton" v-for="data in menudata">
+  <div :class="{links:true,close:MenuStore.close}" id="menu">
+    <!--<div :class="{menubutton:1,current:0,sub1:0,sub2:0}" v-for="(data,i) in menudata">
       <RouterLink :to="data.to">{{ data.name }}</RouterLink>
+    </div>-->
+    
+    <div class="menubutton">
+      <a>HOME</a>
+    </div>
+    <div class="menubutton sub2">
+      <a>HOME</a>
+    </div>
+    <div class="menubutton sub1">
+      <a>HOME</a>
+    </div>
+    <div class="menubutton current">
+      <a>HOME</a>
+    </div>
+    <div class="menubutton sub1">
+      <a>HOME</a>
+    </div>
+    
+    <div class="menubutton sub2">
+      <a>HOME</a>
+    </div>
+    <div class="menubutton">
+      <a>HOME</a>
     </div>
   </div>
 </template>
@@ -72,29 +99,66 @@ label {
     }
   }
 }
-.menu {
+.links {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100% - $menu_button_size * 3);
+  height: calc(100% - $menu_button_size * 5);
   scrollbar-width: none;
   justify-content: center;
   align-items: center;
   &::-webkit-scrollbar {
     display: none;
   }
-  .menubutton {
+  > .menubutton {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 0px;
+    a{
+      transition: font-size .5s var(--anm1);
+      opacity: 0;
+    }
   }
-}
-.scroll-control{
-    position: relative;
-    width: 100%;
-    overflow-y: scroll;
-    height: calc(100% - $menu_button_size * 3);
+  .current {
+    height: 40%;
+    a{
+      opacity: 1;
+      font-size: 100px;
+      text-decoration: underline;
+    }
+  }
+  .sub1{
+    height: 20%;
+    a{
+      opacity: .75;
+      font-size: 50px;
+    }
+  }
+  .sub2{
+    height: 10%;
+    a{
+      opacity: .5;
+      font-size: 25px;
+    }
+  }
+  &.close {
+    .current {
+      a{
+        font-size: 50px;
+      }
+    }
+    .sub1{
+      a{
+        font-size: 25px;
+      }
+    }
+    .sub2{
+      a{
+        font-size: 12px;
+      }
+    }
+  }
 }
 </style>
