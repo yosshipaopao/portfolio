@@ -24,38 +24,40 @@ main {
   right: 0;
   left: 0;
   background: #0fa;
-  > div{ 
+
+    > div {
     float: left;
     height: 100vh;
+    }
   }
-}
-.menu{
+  
+  .menu {
   background: #222;
-  transition: width .5s .1s var(--anm1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: calc(50vw - 2px);
-}
-.content{
-  width: calc(50vw - 2px);
+  transition: width .5s .1s var(--anm1);
+  
+  .close & {
+  width: 120px;
+  transition: width .5s var(--anm1);
+  }
+  }
+  
+  .content {
   background: #222;
   position: absolute;
   right: 0;
+  width: calc(50vw - 2px);
   transition: width .5s var(--anm1);
   padding: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-.close{
-  .menu{
-    width: 120px;
-    transition: width .5s var(--anm1);
+  
+  .close & {
+  width: calc(100vw - 124px);
+  transition: width .5s .1s var(--anm1);
   }
-  .content{
-    width: calc(100vw - 124px);
-    transition: width .5s .1s var(--anm1);
   }
-}
 </style>
