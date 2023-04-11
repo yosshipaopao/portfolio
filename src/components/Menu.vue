@@ -1,34 +1,37 @@
 <script setup>
-import {onMounted,ref} from "vue";
-import { useMenuStore } from "@/stores/menu";
+import {onMounted,computed,ref} from "vue";
+import {  useMenuStore} from "@/stores/menu";
 import menudata from "@/assets/data/menu.json";
+import {  useRoute} from 'vue-router'
 const MenuStore = useMenuStore();
-
-
-const dummy={"name": "","to": ""};
-const fixedmenudata=[...Array(2).fill(dummy), ...menudata, ...Array(2).fill(dummy)];
-const current=ref(0);
-onMounted(()=>{
+const route = useRoute();
+const dummy = {
+  "name": "",
+  "to": ""
+};
+const fixedmenudata = [...Array(2).fill(dummy), ...menudata, ...Array(2).fill(dummy)];
+const current = ref(menudata.findIndex(o => o.to === location.pathname))
+onMounted(() => {
   let wheelSum = 0;
   let waiting = false;
   document.getElementById("menu").addEventListener('wheel', e => {
-  wheelSum += e.deltaY;
-  if (!waiting) {
-    if (Math.abs(wheelSum) >= 100) {
-      waiting = true;
-      setTimeout(() => {
-        waiting = false;
-        wheelSum = 0;
-      }, 500);
-      if (e.deltaY > 0 && current.value < menudata.length - 1) {
-        current.value++;
-      } else if (e.deltaY < 0 && current.value > 0) {
-        current.value--;
+    wheelSum += e.deltaY;
+    if (!waiting) {
+      if (Math.abs(wheelSum) >= 100) {
+        waiting = true;
+        setTimeout(() => {
+          waiting = false;
+          wheelSum = 0;
+        }, 500);
+        if (e.deltaY > 0 && current.value < menudata.length - 1) {
+          current.value++;
+        } else if (e.deltaY < 0 && current.value > 0) {
+          current.value--;
+        }
       }
     }
-  }
-});
-});
+  });
+})
 </script>
 <template>
   <input type="checkbox" v-model="MenuStore.close" id="menu_check" />
@@ -121,7 +124,7 @@ label {
 
     a {
       opacity: 0;
-      transition: font-size 0.5s var(--anm1);
+      transition: font-size 0.5s var(--anm1),opacity .5s var(--anm1);
     }
   }
 
@@ -155,15 +158,15 @@ label {
 
   &.close {
     .current a {
-      font-size: 40px;
+      font-size: 30px;
     }
 
     .sub1 a {
-      font-size: 25px;
+      font-size: 20px;
     }
 
     .sub2 a {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 }

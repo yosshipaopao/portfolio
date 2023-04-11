@@ -8,7 +8,11 @@
         "to": "/work"
     },
     {
-        "name": "test",
-        "to": "/test"
+        "name": "PROFILE",
+        "to": "/profile"
+    },
+    {
+        "name":"CONTACT",
+        "to":"/contact"
     }
 ]
