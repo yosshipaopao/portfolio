@@ -2,6 +2,7 @@
 import { RouterView } from "vue-router";
 import { useMenuStore } from "@/stores/menu";
 import Menu from "@/components/Menu.vue";
+
 const MenuStore = useMenuStore();
 </script>
 
@@ -10,8 +11,10 @@ const MenuStore = useMenuStore();
     <div class="menu">
       <Menu />
     </div>
-    <div class="content">
-      <RouterView/>
+    <div class="content" :weight="0.03">
+      <div class="wrapper">
+        <RouterView/>
+      </div>
     </div>
   </main>
 </template>
@@ -47,14 +50,14 @@ main {
   
   .content {
   background: #222;
+  height: 100vh;
   position: absolute;
   right: 0;
   width: calc(50vw - 2px);
   transition: width .5s var(--anm1);
   padding: 5px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  
+  overflow: hidden;
+  text-align: center;
   .close & {
   width: calc(100vw - 124px);
   transition: width .5s .1s var(--anm1);

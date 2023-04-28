@@ -1,16 +1,17 @@
 <script setup>
-import {onMounted,computed,ref, watch} from "vue";
-import {  useMenuStore} from "@/stores/menu";
-import menudata from "@/assets/data/menu.json";
-import {  useRouter} from 'vue-router';
+import {onMounted,ref, watch} from "vue";
+import {useMenuStore} from "@/stores/menu";
+import {useRouter} from 'vue-router';
 const MenuStore = useMenuStore();
 const router = useRouter();
+
+const menudata=router.options.routes;
 const dummy = {
-  "name": "",
+  "path": "",
   "to": ""
 };
 const fixedmenudata = [...Array(2).fill(dummy), ...menudata, ...Array(2).fill(dummy)];
-const current = ref(menudata.findIndex(o => o.to === location.pathname));
+const current = ref(menudata.findIndex(o => o.path === location.pathname));
 var routetimeout = null;
 onMounted(() => {
   let wheelSum = 0;
@@ -35,7 +36,7 @@ onMounted(() => {
 });
 watch(current,(n,o)=>{
   clearTimeout(routetimeout);
-  routetimeout=setTimeout(()=>router.push(menudata[n].to),1000);
+  routetimeout=setTimeout(()=>router.push(menudata[n].path),1000);
 });
 </script>
 <template>
@@ -45,7 +46,7 @@ watch(current,(n,o)=>{
   </label>
   <div :class="{links:true,close:MenuStore.close}" id="menu">
     <div :class="{menubutton:1,current:current+2==i,sub1:current+3==i||current+1==i,sub2:current+4==i||current==i}" v-for="(data,i) in fixedmenudata">
-      <RouterLink @click="current=i-2" :to="data.to">{{ data.name }}</RouterLink>
+      <RouterLink @click="current=i-2" :to="data.path">{{ data.name }}</RouterLink>
     </div>
   </div>
 </template>
