@@ -1,7 +1,18 @@
 :root {
     --anm1: cubic-bezier(1, 0, 0, 1);
+    --ac-color: #0fa;
+    --ac-color-2: #0af;
 }
 @font-face {
     font-family: 'PlemolJP';
     src: url('@/assets/fonts/PlemolJP-Regular.woff2') format('woff2');
   }
+.ac-color{
+    color: var(--ac-color);
+}
+.ac-color-2{
+    color: var(--ac-color-2);
+}
+.blank{
+    height: 50px;
+}

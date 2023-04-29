@@ -26,7 +26,7 @@ main {
   bottom: 0;
   right: 0;
   left: 0;
-  background: #0fa;
+  background: var(--ac-color);
 
     > div {
     float: left;

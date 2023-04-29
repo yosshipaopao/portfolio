@@ -6,10 +6,7 @@ const MenuStore = useMenuStore();
 const router = useRouter();
 
 const menudata=router.options.routes;
-const dummy = {
-  "path": "",
-  "to": ""
-};
+const dummy = {"path": "","to": ""};
 const fixedmenudata = [...Array(2).fill(dummy), ...menudata, ...Array(2).fill(dummy)];
 const current = ref(menudata.findIndex(o => o.path === location.pathname));
 var routetimeout = null;
@@ -55,10 +52,9 @@ $menu_button_size: 100px;
 
 input {
   display: none;
-
+  transform: scale(1,1);
   &:checked ~ label span {
     background-color: #ffffff;
-
     &::before {
       bottom: calc(#{$menu_button_size}/3);
       transform: rotate(0deg);
@@ -98,7 +94,6 @@ label {
 
   span {
     background-color: rgba(255, 255, 255, 0);
-
     &::before {
       bottom: 0;
       transform: rotate(45deg);
