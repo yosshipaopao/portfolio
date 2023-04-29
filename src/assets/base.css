@@ -7,6 +7,10 @@
     font-family: 'PlemolJP';
     src: url('@/assets/fonts/PlemolJP-Regular.woff2') format('woff2');
   }
+::selection{
+    background: var(--ac-color);
+    color: var(--ac-color-2);
+}
 .ac-color{
     color: var(--ac-color);
 }
