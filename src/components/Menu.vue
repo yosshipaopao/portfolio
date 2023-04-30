@@ -1,14 +1,15 @@
 <script setup>
-import {onMounted,ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {useMenuStore} from "@/stores/menu";
 import {useRouter} from 'vue-router';
+
 const MenuStore = useMenuStore();
 const router = useRouter();
 
-const menudata=router.options.routes;
+const menudata=router.options.routes.filter(v=>{return !v.path.includes(":")});
 const dummy = {"path": "","to": ""};
 const fixedmenudata = [...Array(2).fill(dummy), ...menudata, ...Array(2).fill(dummy)];
-const current = ref(menudata.findIndex(o => o.path === location.pathname));
+const current = location.pathname.includes('/work/')?1:ref(menudata.findIndex(o => o.path === location.pathname));
 var routetimeout = null;
 onMounted(() => {
   let wheelSum = 0;

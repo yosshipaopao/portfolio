@@ -1,7 +1,7 @@
 <script setup>
-import {onMounted}from "vue";
-import gsap from "gsap";
+import {onMounted} from "vue";
 import {enter} from '@/assets/enter.js'
+
 onMounted(()=>{
   enter();
 })

@@ -1,6 +1,7 @@
 <script setup>
 import {enter} from '@/assets/enter.js'
-import {onMounted}from "vue";
+import {onMounted} from "vue";
+
 onMounted(()=>{
   enter();
 });

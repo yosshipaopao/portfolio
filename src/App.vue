@@ -1,6 +1,6 @@
 <script setup>
-import { RouterView } from "vue-router";
-import { useMenuStore } from "@/stores/menu";
+import {RouterView} from "vue-router";
+import {useMenuStore} from "@/stores/menu";
 import Menu from "@/components/Menu.vue";
 
 const MenuStore = useMenuStore();
