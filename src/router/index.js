@@ -35,14 +35,22 @@ const router = createRouter({
 })
 const DEFAULT_TITLE = 'Yosshipaopao';
 router.beforeEach((to, from, next) => {
+  //debugger
   const tl = gsap.timeline();
+  const isWorkDetail = to.name === 'WorkDetail';
+  const wasWorkDetail = from.name === 'WorkDetail';
   tl.to(".wrapper", {
+    x: isWorkDetail ? 100 : wasWorkDetail ? -100 :0,
     duration: 0.2,
     opacity: 0,
     onComplete: () => {
       next();
     }
+  }).to(".wrapper",{
+    x: isWorkDetail ? -100 : wasWorkDetail ? 100 : 0,
+    duration:0
   }).to(".wrapper", {
+    x: 0,
     duration: 0.2,
     opacity: 1
   }, 1);
