@@ -33,9 +33,8 @@ const router = createRouter({
     }
   ]
 })
-const DEFAULT_TITLE = 'Yosshipaopao';
+const DEFAULT_TITLE = 'yosshipaopao';
 router.beforeEach((to, from, next) => {
-  //debugger
   const tl = gsap.timeline();
   const isWorkDetail = to.name === 'WorkDetail';
   const wasWorkDetail = from.name === 'WorkDetail';
