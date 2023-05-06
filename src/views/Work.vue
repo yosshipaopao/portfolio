@@ -4,11 +4,7 @@ import worksJson from '@/assets/data/works.json';
 const props = defineProps({
   id: String,
 });
-if(worksJson.works[props.id]!=null){
-  document.title = worksJson.works[props.id].title+" | yosshipaopao";
-}else{
-    document.title = "404"
-}
+document.title = worksJson.works[props.id]!=null?worksJson.works[props.id].title+" | yosshipaopao":'404';
 </script>
 
 <template>
