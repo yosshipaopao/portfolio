@@ -31,11 +31,14 @@ const push = (path)=>{
         <div class="main">
             <h1>My Works</h1>
             <div class="blank"></div>
+            <div class="blank"></div>
             <div class="works">
-                <div v-for="(work,i) of works['titles']" @click="push('/work/'+works.works[work].href)" class="work" data-enter data-enter-x="0" data-enter-y="100" :data-enter-delay="i*0.1%0.5">
+                <div v-for="(work,i) of works['titles']" @click="push('/work/'+works.works[work].href)" class="work" data-enter data-enter-x="0" data-enter-y="100" >
                     <img :src="'https://i.ytimg.com/vi/'+works.works[work].youtube+'/0.jpg'" alt="">
-                    <h3>{{works.works[work].info}}</h3>
-                    <h3>{{works.works[work].title}}</h3>
+                    <div class="details">
+                        <h3>{{works.works[work].info}}</h3>
+                        <h3>{{works.works[work].title}}</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,21 +56,58 @@ const push = (path)=>{
     padding: 100px 0;
     text-align: center;
     margin: 0 auto;
+
     .works{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
+        align-items: center;
+        flex-direction: column;
         .work{
             display: block;
-            width: 300px;
-            height: 300px;
-            margin: 50px 30px;
+            width: 80%;
+            transform: skewY(-20deg);
+            height: 200px;
+            margin: 10px 0;
             background: #000;
             border-radius: 10px;
             overflow: hidden;
+            transition: height 0.5s ease-in-out;
+            &:hover{
+                cursor: pointer;
+                height: 500px;
+                img{
+                    transform: skewY(20deg) translateY(00%);
+                    filter: brightness(100%);
+                }
+                .details{
+                    transform: skewY(10deg);
+                    //opacity: 0;
+                }
+            }
             img{
+                transform: skewY(10deg) translateY(-20%);
                 width: 100%;
+                transition: transform 0.5s ease-in-out,filter 0.5s ease-in-out;
+                filter: brightness(50%);
+            }
+            .details{
+                transform: skewY(0deg);
+                //opacity: 1;
+                transition: transform 0.5s ease-in-out,opacity 0.5s ease-in-out;
+                position: absolute;
+                bottom: 10px;
+                right: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: end;
+                overflow: hidden;
+                h3{
+                    font-size: 50px;
+                    mix-blend-mode:exclusion;
+                    white-space: nowrap;
+                }
             }
         }
     }
