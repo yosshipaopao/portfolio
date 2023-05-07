@@ -5,6 +5,7 @@ const props = defineProps({
   id: String,
 });
 document.title = worksJson.works[props.id]!=null?worksJson.works[props.id].title+" | yosshipaopao":'404';
+debugger
 </script>
 
 <template>
@@ -19,12 +20,13 @@ document.title = worksJson.works[props.id]!=null?worksJson.works[props.id].title
                 <div class="blank"></div>
               <iframe width="560" height="315" :src="'https://www.youtube.com/embed/'+worksJson.works[props.id].yt_main" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               <div class="blank"></div>
+            </div>
                <div v-if="worksJson.works[props.id].syusai!=null">
                  <h2>主催</h2>
                  <h1>{{worksJson.works[props.id].syusai}}</h1>
                    <div class="blank"></div>
              </div>
-              <div v-if="worksJson.works[props.id].song!=null">
+                <div v-if="worksJson.works[props.id].song!=null">
                  <h2>音楽</h2>
                  <h1>{{worksJson.works[props.id].song}}</h1>
                   <div class="blank"></div>
@@ -34,7 +36,6 @@ document.title = worksJson.works[props.id]!=null?worksJson.works[props.id].title
                  <h1>{{worksJson.works[props.id].vocal}}</h1>
                   <div class="blank"></div>
              </div>
-            </div>
         </div>
     </Smoothie>
     <div v-else>
