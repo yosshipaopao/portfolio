@@ -5,7 +5,6 @@ const props = defineProps({
   id: String,
 });
 document.title = worksJson.works[props.id]!=null?worksJson.works[props.id].title+" | yosshipaopao":'404';
-debugger
 </script>
 
 <template>

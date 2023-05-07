@@ -10,7 +10,6 @@ import { useScrollStore } from '@/stores/scroll';
 const scrollStore = useScrollStore();
 
 const router = useRouter();
-debugger
 const works = ref(worksJson);
 
 onMounted(()=>{
