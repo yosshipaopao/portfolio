@@ -1,5 +1,6 @@
 {
   "titles": [
+    "os3kobaruto",
     "etude",
     "David",
     "LABlost",
@@ -35,6 +36,14 @@
     "daybreak"
   ],
   "works": {
+    "os3kobaruto": {
+      "href": "os3kobaruto",
+        "title": "コバルトメモリーズ",
+        "song": "はるまきごはん",
+        "youtube": "_C5CQStO1K0",
+        "yt_main": "QcB2Vv2sKm0",
+        "info": "OS-3合作"
+    },
     "etude": {
       "href": "etude",
       "title": "短夜のエチュード",
